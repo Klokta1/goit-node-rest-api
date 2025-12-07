@@ -18,10 +18,16 @@ const Contact = sequelize.define("contact", {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
+    owner: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "users",
+            key: "id",
+        },
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
+    },
 });
-
-// Contact.sync();
-// Contact.sync({alter: true});
-// Contact.sync({force: true});
 
 export default Contact;
